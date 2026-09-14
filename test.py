@@ -38,12 +38,10 @@ def comparer_codes(code_secret, proposition):
         1 for i in range(nb_code) if code_secret[i] == proposition[i]
     )
 
-    mal_place = 0
-    for couleur in proposition:
-        if couleur in code_secret:
-            mal_place += 1
-    mal_place -= bien_place
-
+    mal_place = sum(
+            1 for i in range(nb_code) if code_secret[i] != proposition[i] and proposition[i] in code_secret
+            )
+   
     return bien_place, mal_place
 
 
